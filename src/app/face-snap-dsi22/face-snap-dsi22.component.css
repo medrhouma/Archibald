@@ -1,72 +1,129 @@
+/* src/app/components/face-snap-dsi22/face-snap-dsi22.component.css */
+
+/* Styles généraux de la carte */
 .face-snap-card {
-  width: 35%;
-  max-width: 400px;
-  padding: 1.5em;
-  margin: 1.5em auto;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 12px; /* Bordures arrondies */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .face-snap-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* Effet d'ombre au survol */
+  transform: translateY(-5px); /* Légère élévation lors du survol */
 }
 
-.face-snap-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+/* Styles de l'image */
+.face-snap-card img.face-snap-image {
+  width: 80%;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
 }
 
-.face-snap-card img:hover {
-  transform: scale(1.05);
+.face-snap-card:hover img.face-snap-image {
+  transform: scale(1.05); /* Zoom subtil sur l'image au survol */
 }
 
+/* Styles des titres et du texte */
 .face-snap-card h2 {
-  margin: 1em 0 0.5em;
-  font-size: 2.5em;
-  color: #4a90e2;
+  font-size: 1.75rem;
   font-weight: bold;
-  letter-spacing: 10px;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  transform: rotate(-2deg);
-  transition: letter-spacing 0.3s ease; 
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center; /* Centrage du titre */
 }
 
-.face-snap-card h2:hover {
-  letter-spacing: 3px; 
+.face-snap-card .upload-date {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #999;
+  margin-bottom: 10px;
+  text-align: center; /* Centrage de la date */
 }
 
+.face-snap-card .description {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Styles des actions (boutons et infos) */
+.face-snap-card .snap-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* Styles des boutons */
 .face-snap-card button {
-  background: linear-gradient(45deg, #ff6b6b, #feca57);
-  border: none;
-  border-radius: 25px;
-  color: white;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-size: 1.2em;
-  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
   padding: 10px 20px;
-  margin-top: 15px;
+  border: none;
+  border-radius: 20px; /* Boutons arrondis */
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); /* Ombre bleue pour le bouton */
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .face-snap-card button:hover {
-  transform: scale(1.05) rotate(-2deg);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(45deg, #feca57, #ff6b6b);
+  background-color: #0056b3; /* Couleur plus foncée au survol */
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4); /* Ombre plus profonde au survol */
 }
 
 .face-snap-card button:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #004080; /* Couleur encore plus foncée lors du clic */
+  transform: scale(0.98); /* Rétrécissement léger lors du clic */
+  box-shadow: 0 4px 12px rgba(0, 64, 128, 0.3);
+}
+
+/* Styles des informations de snaps */
+.face-snap-card .snap-info {
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.face-snap-card .snap-info span {
+  margin-left: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Effets "snapped" (après un snap) */
+.snapped {
+  background-color: rgba(144, 238, 144, 0.2); /* Vert clair plus visible */
+  border: 2px solid #28a745; /* Bordure verte */
+}
+
+.snapped h2, .snapped .description, .snapped .upload-date {
+  color: #218838; /* Texte vert foncé pour indiquer l'état snapped */
+}
+
+.snapped button {
+  background-color: #28a745; /* Vert vif */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3); /* Ombre verte */
+}
+
+.snapped button:hover {
+  background-color: #218838; /* Vert foncé au survol */
+  box-shadow: 0 6px 20px rgba(33, 136, 56, 0.4); /* Ombre verte plus profonde */
+}
+
+.snapped button:active {
+  background-color: #1e7e34; /* Vert encore plus foncé lors du clic */
 }
